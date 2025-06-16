@@ -501,6 +501,9 @@ class MSSQLStream(SQLStream):
         )
         query = table.select()
 
+        if self.config.get("use_nolock", False):
+            query = query.with_hint(table, "NOLOCK")
+
         if self.replication_key:
             replication_key_col = table.columns[self.replication_key]
             order_by = (
