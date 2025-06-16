@@ -157,6 +157,12 @@ class Tapmssql(SQLTap):
             default=False,
             description="Turn on Higher Defined(HD) JSON Schema types to assist Targets"
         ),
+        th.Property(
+            "use_nolock",
+            th.BooleanType,
+            default=False,
+            description="Use NOLOCK hint for all SELECT queries to avoid blocking"
+        ),
     ).to_dict()
 
 
